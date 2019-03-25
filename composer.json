@@ -1,0 +1,8 @@
+{
+    "name": "aleksandra/slim-projet",
+    "description": "Projet utilisant Slim Framework en version 3 - portfoliio",
+    "type": "project",
+    "require": {
+        "slim/slim": "^3.12"
+    }
+}
