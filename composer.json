@@ -3,6 +3,7 @@
     "description": "Projet utilisant Slim Framework en version 3 - portfoliio",
     "type": "project",
     "require": {
-        "slim/slim": "^3.12"
+        "slim/slim": "^3.12",
+        "squizlabs/php_codesniffer": "^3.4"
     }
 }
