@@ -1,21 +1,5 @@
 {% extends 'base.twig' %}
 {% block body %}
-    <h1>Page d'accueil</h1>
+    <h1>Welcome to paradise!</h1>
 
-    <p>Description : {{ products[0]["description"] }}</p>
-
-    {% if title == "Bonjour !" %}
-        <p>Bonjour</p>
-    {% elseif title == "Bonsoir !" %}
-        <p>Bonsoir</p>
-    {% else %}
-        <p>Bonne nuit</p>
-    {% endif %}
-
-    {% for produitEnCours in products %}
-        <h3>{{ produitEnCours.name }}</h3>
-    {% endfor %}
-
-    <!-- Commentaire HTML -->
-    {# Commentaire TWIG (PHP) #}
 {% endblock %}

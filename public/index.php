@@ -8,11 +8,8 @@ require_once dirname(__DIR__) . '/vendor/autoload.php';
 
 //création de l'application
 //debug des erreurs (a configurer manuellement depuis l'exemple de la doc application/configuration
-$config = [
-    'settings' => [
-        'displayErrorDetails' => true
-    ]
-];
+$config = require dirname(__DIR__) . '/config/config.php';
+
 
 $app = new App($config);
 
