@@ -30,6 +30,6 @@ class ProjectController
     public function create( ServerRequestInterface $request, ResponseInterface $response, ?array $args
     )
     {
-        return $response->getBody()->write('<h1>Création d\'un projet</h1>');
+        return $this->twig->render($response, 'project/create.twig');
     }
 }
