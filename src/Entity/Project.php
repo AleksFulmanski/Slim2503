@@ -40,6 +40,18 @@ class Project
      */
     private $languages;
 
+    public function __construct()
+    {
+
+        if(!is_null($this->started_at)){
+            $this->startedAt = new \DateTime($this->started_at);
+        }
+        if(!is_null($this->finished_at)){
+            $this->finishedAt = new \DateTime($this->finished_at);
+        }
+    }
+
+
     /**
      * @return int
      */
@@ -115,7 +127,7 @@ class Project
     /**
      * @return \DateTime
      */
-    public function getFinishedAt(): \DateTime
+    public function getFinishedAt(): ?\DateTime
     {
         return $this->finishedAt;
     }
@@ -151,7 +163,7 @@ class Project
     /**
      * @return string[]
      */
-    public function getLanguages(): array
+    public function getLanguages(): ?array
     {
         return $this->languages;
     }

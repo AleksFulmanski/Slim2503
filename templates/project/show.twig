@@ -4,10 +4,14 @@
 
     {{ dump(project) }}
 
-    <h1>{{ project["name"] }}</h1>
+    <h1>{{ project.name }}</h1>
     <h2>{{ project.description | raw('html') }}</h2>
     <p class="text-muted">
-        Développé du {{ project.startedAt.format('d/m/Y') }} au {{ project.finishedAt.format('d/m/Y à H:i:s') }}</p>
+        Développé du {{ project.startedAt.format('d/m/Y') }}
+    {% if project.finishedAt is not null %}
+        au {{ project.finishedAt.format('d/m/Y à H:i:s') }}
+    {% endif %}
+    </p>
     <p>{{ project.image }}</p>
 
     <ul>

@@ -64,4 +64,40 @@ class Connection
         $statement->execute();
         return $statement->fetchAll();
     }
+
+    /**
+     * Exécute une requêteSQL préparée
+     * @param string $query - requête SQL préparée
+     * @param array $params - les parametres de la requete
+     * @param string|null $className - l'eventuelle classe ou seront stockés les resultats
+     * @param bool|null $fetchAll - si passé à false utilisation de fetch, si true utilisation de fetchAll
+     */
+    public function queryPrepared(string $query, array $params, ?string $className = null, ?bool $fetchAll = true)
+    {
+        //on prépare la requete
+        $statement = $this->pdo->prepare($query);
+        //on ajoute les paramètres à la requête
+        foreach ($params as $key => $value){
+            $statement->bindParam($key, $value);
+        }
+
+        //on execute la requete
+        $statement->execute();
+
+        //on gère fetchMode (est-ce qu'on stocke les résultats dans une classe?)
+        if(!is_null($className)){
+            $statement->setFetchMode(\PDO::FETCH_CLASS, $className);
+            //\PDO c'est la même chose que $this->pdo
+        }
+        //on retourne les resultats (fetchAll? fetch?)
+        if($fetchAll){
+            $resultat = $statement->fetchAll();
+        } else {
+            $resultat = $statement->fetch();
+        }
+
+        return $resultat;
+    }
+
+
 }

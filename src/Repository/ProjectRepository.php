@@ -43,9 +43,7 @@ class ProjectRepository
         $resultat = $this->connection->queryPrepared(
             $query,
             [':slug' => $slug],
-            //ce sera stocké dans entity Project.php
             Project::class,
-            //false c'est pour fetch all oui ou non
             false
         );
 
