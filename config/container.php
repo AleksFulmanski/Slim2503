@@ -3,6 +3,9 @@
 use App\Controller\AboutController;
 use App\Controller\ContactController;
 use App\Controller\ProjectController;
+
+use App\Model\Connection;
+use App\Repository\ProjectRepository;
 use Psr\Container\ContainerInterface;
 use Slim\Http\Environment;
 use Slim\Http\Uri;
@@ -16,7 +19,7 @@ $container = $app->getContainer();
 
 //configuration de Twig
 
-$container['view'] = function ($container) {
+$container['view'] = function (ContainerInterface $container) {
     $view = new Twig(dirname(__DIR__) . '/templates', [
         'cache' => false,
         'strict_variables' => true,
@@ -45,7 +48,10 @@ $container['view'] = function ($container) {
 //on obtient twig en envoyant la clef view du conteneur
 
 $container[ProjectController::class] = function ($container) {
-    return new ProjectController($container->get('view'));
+    return new ProjectController(
+        $container->get('view'),
+        $container->get(ProjectRepository::class)
+    );
 };
 
 $container[ContactController::class] = function (ContainerInterface $container) {
@@ -54,4 +60,18 @@ $container[ContactController::class] = function (ContainerInterface $container) 
 
 $container[AboutController::class] = function ($container) {
     return new AboutController($container->get('view'));
+};
+
+$container[ProjectRepository::class] = function(ContainerInterface $container){
+    return new ProjectRepository(
+        $container->get(Connection::class)
+    );
+};
+
+$container[Connection::class] = function(ContainerInterface $container){
+    return new Connection(
+        $container['settings']['database_name'],
+        $container['settings']['database_user'],
+        $container['settings']['database_pass']
+    );
 };

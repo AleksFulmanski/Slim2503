@@ -6,11 +6,10 @@
 return [
     'settings' => [
         'displayErrorDetails' => true,
-        'database' => [
-            'dbname' => 'portfolio_bdd',
-            'user' => 'aleks',
-            'password' => 'Tygrysek'
-        ]
+        'database_name' => 'portfolio_bdd',
+        'database_user' => 'aleks',
+        'database_pass' => 'Tygrysek'
     ]
+
 ];
 
