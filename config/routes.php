@@ -36,7 +36,7 @@ $app->group('/projet', function () {
 
     // création d'une page de détail des projets
     //Nouveauté : on ajoute une variable dans l'URL avec des accolades
-    $this->get("/{id:\d+}", ProjectController::class . ':show')->setName('app_project_show');
+    $this->get("/{slug}", ProjectController::class . ':show')->setName('app_project_show');
 
 });
 
