@@ -33,11 +33,11 @@ $app->group('/projet', function () {
 
 
     //Page de la liste des projets
-    $this->get("/", ProjectController::class . ':list')->setName('app_project_list');
+    $this->get("/liste", ProjectController::class . ':list')->setName('app_project_list');
 
 
     //Page de création
-    $this->get("/creation", ProjectController::class . ':create')->setName('app_project_create');
+    $this->map(['GET', 'POST'], "/creation", ProjectController::class . ':create')->setName('app_project_create');
 
 
     // création d'une page de détail des projets

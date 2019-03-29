@@ -6,6 +6,7 @@ use App\Controller\ProjectController;
 
 use App\Model\Connection;
 use App\Repository\ProjectRepository;
+use App\TwigExtension\FormExtension;
 use Psr\Container\ContainerInterface;
 use Slim\Http\Environment;
 use Slim\Http\Uri;
@@ -35,6 +36,9 @@ $container['view'] = function (ContainerInterface $container) {
     $router = $container->get('router');
     $uri = Uri::createFromEnvironment(new Environment($_SERVER));
     $view->addExtension(new Slim\Views\TwigExtension($router, $uri));
+
+    //extensions personnalisées
+    $view->addExtension(new FormExtension($router, $uri));
 
     return $view;
 };

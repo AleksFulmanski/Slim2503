@@ -32,7 +32,7 @@ class ProjectController
      * @return ResponseInterface
      * @throws \Exception
      */
-    public function show(ServerRequestInterface $request, ResponseInterface $response, ?array $args)
+    public function show(ServerRequestInterface $request, ResponseInterface $response, ?array $args): ResponseInterface
     {
 
         //récupération du projet
@@ -44,8 +44,8 @@ class ProjectController
         ]);
     }
 
-    public function list( ServerRequestInterface $request, ResponseInterface $response
-    )
+    public function list(ServerRequestInterface $request, ResponseInterface $response
+    ): ResponseInterface
     {
         $projects = $this->projectRepository->findAll();
         return $this->twig->render($response, 'project/list.twig', ['projects' => $projects]);
@@ -53,8 +53,16 @@ class ProjectController
 
 
     public function create( ServerRequestInterface $request, ResponseInterface $response, ?array $args
-    )
+    ): ResponseInterface
     {
+        if ($request->getMethod() ==='POST'){
+            //TODO: vérifier tous les champs
+
+            $this->projectRepository->insert($request->getParsedBody());
+
+            //TODO: la redirection
+        }
+
         return $this->twig->render($response, 'project/create.twig');
     }
 }

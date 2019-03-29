@@ -2,7 +2,14 @@
 
 {% block body %}
 
-    <h1>
-        Je suis ultra créatif
-    </h1>
+    <h1>Je suis ultra créative</h1>
+
+    <form method="post">
+    {{ form_row('Nom', 'text', 'name', 'Entrer un nom') |raw ('html') }}
+    {{ form_row('Description', 'textarea', 'description', 'Entrer une description') |raw ('html') }}
+    {{ form_row('Date de début', 'date', 'started_at') |raw ('html') }}
+    {{ form_row('Date de fin', 'date', 'finished_at') |raw ('html') }}
+
+    <button type="button" class="btn btn-outline-primary">Envoyez le formulaire</button>
+    </form>
 {% endblock body %}

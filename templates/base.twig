@@ -33,7 +33,9 @@
                             <?php foreach($categories as $cat) : ?>
                             <a class="dropdown-item" href="{{ path_for('app_project_create') }}">Création</a>
                             <?php endforeach; ?>
-                            <a class="dropdown-item" href="{{ path_for('app_project_show', {slug : 'projet-slim'}) }}">Projet</a>
+                            <a class="dropdown-item" href="{{ path_for('app_project_list') }}">Projets</a>
+                            <?php endforeach; ?>
+                            {#<a class="dropdown-item" href="{{ path_for('app_project_show', {slug : 'projet-slim'}) }}">Projets</a>#}
                             <?php endforeach; ?>
 
                         </div>
