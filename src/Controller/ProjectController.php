@@ -44,6 +44,13 @@ class ProjectController
         ]);
     }
 
+    public function list( ServerRequestInterface $request, ResponseInterface $response
+    )
+    {
+        $projects = $this->projectRepository->findAll();
+        return $this->twig->render($response, 'project/list.twig', ['projects' => $projects]);
+    }
+
 
     public function create( ServerRequestInterface $request, ResponseInterface $response, ?array $args
     )

@@ -31,8 +31,14 @@ $route->setName('homepage');
 
 $app->group('/projet', function () {
 
+
+    //Page de la liste des projets
+    $this->get("/", ProjectController::class . ':list')->setName('app_project_list');
+
+
     //Page de création
     $this->get("/creation", ProjectController::class . ':create')->setName('app_project_create');
+
 
     // création d'une page de détail des projets
     //Nouveauté : on ajoute une variable dans l'URL avec des accolades
@@ -43,6 +49,9 @@ $app->group('/projet', function () {
 $app->get('/contact', ContactController::class . ':contact')->setName('app_contact');
 
 $app->get('/about', AboutController::class . ':about')->setName('app_about');
+
+
+
 
 
 

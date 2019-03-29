@@ -1,0 +1,20 @@
+{% extends 'base.twig' %}
+
+{% block body %}
+
+
+    <h1>Best Projects Ever</h1>
+
+        {% for prod in projects %}
+
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">{{ prod.name | upper | raw('html') }}</h5>
+                    <p class="card-text">{{ prod.description  | slice(0, 50) | raw('html') }}</p>
+                    <a href="{{ path_for('app_project_show', {slug : prod.slug}) }}" class="btn btn-primary">Détails</a>
+                </div>
+            </div>
+
+        {% endfor %}
+
+{% endblock body %}
